@@ -5,7 +5,7 @@ const DB_NAME = 'marapuwa_projet1';
 const DB_USER = 'marapuwa_batixx';
 const DB_PASS = 'marapuwa_batixx';
 
-const GEMINI_API_KEY = '';
+const GEMINI_API_KEY = '66.29.132.129';
 const GEMINI_MODEL = 'gemini-3-flash-preview';
 
 const GOOGLE_SERVICE_ACCOUNT_JSON = __DIR__ . '/google-service-account.json';
