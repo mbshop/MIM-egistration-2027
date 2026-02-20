@@ -277,7 +277,7 @@ function callGeminiOcr(string $imagePath): ?array
         ],
     ];
     $ch = curl_init();
-    $url = 'https://generativelanguage.googleapis.com/v1/models/' . urlencode(GEMINI_MODEL) . ':generateContent?key=' . urlencode(GEMINI_API_KEY);
+    $url = 'https://generativelanguage.googleapis.com/v1beta/models/' . urlencode(GEMINI_MODEL) . ':generateContent?key=' . urlencode(GEMINI_API_KEY);
     curl_setopt_array($ch, [
         CURLOPT_URL => $url,
         CURLOPT_POST => true,
@@ -540,4 +540,3 @@ $extracted = performOcrOnImage($imagePath);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
