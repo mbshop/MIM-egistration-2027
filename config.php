@@ -1,12 +1,12 @@
 <?php
 
 const DB_HOST = 'localhost';
-const DB_NAME = 'mim_registration';
-const DB_USER = 'root';
-const DB_PASS = '';
+const DB_NAME = 'marapuwa_projet01';
+const DB_USER = 'marapuwa_batixx';
+const DB_PASS = 'marapuwa_batixx';
 
-const GEMINI_API_KEY = '';
-const GEMINI_MODEL = 'gemini-1.5-flash';
+const GEMINI_API_KEY = 'AIzaSyAvFq3rO9e1yQGvqPrYyf2fuLAUD2_cXVA';
+const GEMINI_MODEL = 'gemini-3-flash-preview';
 
 const GOOGLE_SERVICE_ACCOUNT_JSON = __DIR__ . '/google-service-account.json';
 const GOOGLE_SHEETS_SPREADSHEET_ID = '';
