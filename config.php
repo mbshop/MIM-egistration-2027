@@ -1,7 +1,7 @@
 <?php
 
 const DB_HOST = 'localhost';
-const DB_NAME = 'marapuwa_projet01';
+const DB_NAME = 'marapuwa_projet1';
 const DB_USER = 'marapuwa_batixx';
 const DB_PASS = 'marapuwa_batixx';
 
