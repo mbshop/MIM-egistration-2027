@@ -1,0 +1,13 @@
+{
+  "name": "mim/registration-ocr",
+  "description": "Simple PHP web app for OCR-based participant registration with Gemini and Google Sheets",
+  "require": {
+    "google/apiclient": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  }
+}
+
