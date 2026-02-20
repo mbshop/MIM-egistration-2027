@@ -1,4 +1,12 @@
 <?php
+
+if (!file_exists(GOOGLE_SERVICE_ACCOUNT_JSON)) {
+    echo 'Fichier JSON introuvable : ' . htmlspecialchars(GOOGLE_SERVICE_ACCOUNT_JSON);
+} else {
+    echo 'Fichier JSON trouvé : ' . htmlspecialchars(GOOGLE_SERVICE_ACCOUNT_JSON);
+}
+exit;
+
 require __DIR__ . '/config.php';
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     require __DIR__ . '/vendor/autoload.php';
