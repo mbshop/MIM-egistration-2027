@@ -8,11 +8,61 @@ require __DIR__ . '/config.php';
     <title>Inscription participants</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body.marrakech-body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #ffd8a6 0, #f4a261 40%, #e76f51 75%, #6b2c1a 100%);
+            background-attachment: fixed;
+        }
+
+        .navbar-marrakech {
+            background: linear-gradient(90deg, rgba(107, 44, 26, 0.95), rgba(231, 111, 81, 0.95));
+        }
+
+        .card-marrakech {
+            border: 0;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-marrakech-primary {
+            background: linear-gradient(90deg, #e76f51, #f4a261);
+            border: none;
+        }
+
+        .btn-marrakech-primary:hover {
+            background: linear-gradient(90deg, #f4a261, #e76f51);
+        }
+
+        .btn-marrakech-outline {
+            border-color: #e76f51;
+            color: #6b2c1a;
+        }
+
+        .btn-marrakech-outline:hover {
+            background-color: #e76f51;
+            border-color: #e76f51;
+            color: #fff;
+        }
+
+        .marrakech-brand {
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 576px) {
+            .card-marrakech {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<body class="marrakech-body">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-marrakech mb-4">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Inscription participants</a>
+        <a class="navbar-brand marrakech-brand" href="index.php">Inscription Marrakech</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +81,8 @@ require __DIR__ . '/config.php';
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
-            <div class="card shadow-sm mb-4">
+        <div class="col-12 col-lg-5 col-xl-4">
+            <div class="card card-marrakech mb-4">
                 <div class="card-header">
                     Choisir une image du document
                 </div>
@@ -55,7 +105,7 @@ require __DIR__ . '/config.php';
                             </div>
                         </div>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-lg">Analyser le document</button>
+                            <button type="submit" class="btn btn-marrakech-primary btn-lg text-white">Analyser le document</button>
                         </div>
                     </form>
                 </div>
@@ -103,4 +153,3 @@ if (captureButton) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-

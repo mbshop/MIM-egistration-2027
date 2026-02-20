@@ -35,11 +35,50 @@ $participants = $stmt->fetchAll();
     <title>Liste des participants</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body.marrakech-body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #ffd8a6 0, #f4a261 40%, #e76f51 75%, #6b2c1a 100%);
+            background-attachment: fixed;
+        }
+
+        .navbar-marrakech {
+            background: linear-gradient(90deg, rgba(107, 44, 26, 0.95), rgba(231, 111, 81, 0.95));
+        }
+
+        .card-marrakech {
+            border: 0;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-marrakech-primary {
+            background: linear-gradient(90deg, #e76f51, #f4a261);
+            border: none;
+        }
+
+        .btn-marrakech-primary:hover {
+            background: linear-gradient(90deg, #f4a261, #e76f51);
+        }
+
+        .marrakech-brand {
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 576px) {
+            .card-marrakech {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<body class="marrakech-body">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-marrakech mb-4">
     <div class="container">
-        <a class="navbar-brand" href="index.php">Inscription participants</a>
+        <a class="navbar-brand marrakech-brand" href="index.php">Inscription Marrakech</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,7 +98,7 @@ $participants = $stmt->fetchAll();
 <div class="container">
     <div class="row justify-content-center mb-3">
         <div class="col-12 col-lg-8">
-            <form class="card card-body shadow-sm mb-3" method="get" action="list_participants.php">
+            <form class="card card-marrakech mb-3" method="get" action="list_participants.php">
                 <div class="row g-2 align-items-end">
                     <div class="col-12 col-md-9">
                         <label class="form-label">Rechercher par ID, nom, prénom ou numéro de document</label>
@@ -75,7 +114,7 @@ $participants = $stmt->fetchAll();
 
     <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
-            <div class="card shadow-sm">
+            <div class="card card-marrakech">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h1 class="h5 mb-0">Participants</h1>
                     <small class="text-muted">
@@ -133,4 +172,3 @@ $participants = $stmt->fetchAll();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-

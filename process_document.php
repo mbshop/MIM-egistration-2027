@@ -429,114 +429,156 @@ $extracted = performOcrOnImage($imagePath);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Vérification des informations</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body.marrakech-body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top left, #ffd8a6 0, #f4a261 40%, #e76f51 75%, #6b2c1a 100%);
+            background-attachment: fixed;
+        }
+
+        .navbar-marrakech {
+            background: linear-gradient(90deg, rgba(107, 44, 26, 0.95), rgba(231, 111, 81, 0.95));
+        }
+
+        .card-marrakech {
+            border: 0;
+            border-radius: 1.25rem;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-marrakech-primary {
+            background: linear-gradient(90deg, #e76f51, #f4a261);
+            border: none;
+        }
+
+        .btn-marrakech-primary:hover {
+            background: linear-gradient(90deg, #f4a261, #e76f51);
+        }
+
+        .marrakech-brand {
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 576px) {
+            .card-marrakech {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-    <div class="container">
-        <a class="navbar-brand" href="index.php">Inscription participants</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Nouvelle inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="list_participants.php">Participants</a>
-                </li>
-            </ul>
+
+<body class="marrakech-body">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-marrakech mb-4">
+        <div class="container">
+            <a class="navbar-brand marrakech-brand" href="index.php">Inscription Marrakech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Nouvelle inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list_participants.php">Participants</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-6">
-            <div class="card shadow-sm">
-                <div class="card-header">
-                    Vérifier et compléter les informations
-                </div>
-                <div class="card-body">
-                    <form action="save_participant.php" method="post">
-                        <div class="mb-3">
-                            <label class="form-label">Nom</label>
-                            <input type="text" name="nom" class="form-control" value="<?php echo htmlspecialchars($extracted['nom']); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Prénom</label>
-                            <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars($extracted['prenom']); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Numéro du document (CIN / Passeport)</label>
-                            <input type="text" name="document_id" class="form-control" value="<?php echo htmlspecialchars($extracted['document_id']); ?>">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Date de naissance</label>
-                            <input type="date" name="date_naissance" class="form-control" value="<?php echo htmlspecialchars($extracted['date_naissance']); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Sexe</label>
-                            <select name="sexe" class="form-select" required>
-                                <option value="">Choisir</option>
-                                <option value="M" <?php echo $extracted['sexe'] === 'M' ? 'selected' : ''; ?>>Masculin</option>
-                                <option value="F" <?php echo $extracted['sexe'] === 'F' ? 'selected' : ''; ?>>Féminin</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Pays</label>
-                            <input type="text" name="pays" list="country-list" class="form-control" value="<?php echo htmlspecialchars($extracted['pays']); ?>" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Ville</label>
-                            <input type="text" name="ville" class="form-control" value="<?php echo htmlspecialchars($extracted['ville']); ?>" required>
-                        </div>
-                        <datalist id="country-list">
-                            <option value="Morocco">
-                            <option value="Algeria">
-                            <option value="Tunisia">
-                            <option value="France">
-                            <option value="Spain">
-                            <option value="Italy">
-                            <option value="Germany">
-                            <option value="Portugal">
-                            <option value="Netherlands">
-                            <option value="Belgium">
-                            <option value="United Kingdom">
-                            <option value="Ireland">
-                            <option value="Switzerland">
-                            <option value="Canada">
-                            <option value="United States">
-                            <option value="Mexico">
-                            <option value="Brazil">
-                            <option value="Argentina">
-                            <option value="Turkey">
-                            <option value="Saudi Arabia">
-                            <option value="United Arab Emirates">
-                            <option value="Qatar">
-                            <option value="Egypt">
-                            <option value="South Africa">
-                            <option value="India">
-                            <option value="China">
-                            <option value="Japan">
-                            <option value="South Korea">
-                            <option value="Indonesia">
-                            <option value="Australia">
-                            <option value="New Zealand">
-                        </datalist>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-success btn-lg">Enregistrer le participant</button>
-                        </div>
-                    </form>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5 col-xl-4">
+                <div class="card card-marrakech">
+                    <div class="card-header">
+                        Vérifier et compléter les informations
+                    </div>
+                    <div class="card-body">
+                        <form action="save_participant.php" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Nom</label>
+                                <input type="text" name="nom" class="form-control" value="<?php echo htmlspecialchars($extracted['nom']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Prénom</label>
+                                <input type="text" name="prenom" class="form-control" value="<?php echo htmlspecialchars($extracted['prenom']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Numéro du document (CIN / Passeport)</label>
+                                <input type="text" name="document_id" class="form-control" value="<?php echo htmlspecialchars($extracted['document_id']); ?>">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Date de naissance</label>
+                                <input type="date" name="date_naissance" class="form-control" value="<?php echo htmlspecialchars($extracted['date_naissance']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Sexe</label>
+                                <select name="sexe" class="form-select" required>
+                                    <option value="">Choisir</option>
+                                    <option value="M" <?php echo $extracted['sexe'] === 'M' ? 'selected' : ''; ?>>Masculin</option>
+                                    <option value="F" <?php echo $extracted['sexe'] === 'F' ? 'selected' : ''; ?>>Féminin</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pays</label>
+                                <input type="text" name="pays" list="country-list" class="form-control" value="<?php echo htmlspecialchars($extracted['pays']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ville</label>
+                                <input type="text" name="ville" class="form-control" value="<?php echo htmlspecialchars($extracted['ville']); ?>" required>
+                            </div>
+                            <datalist id="country-list">
+                                <option value="Morocco">
+                                <option value="Algeria">
+                                <option value="Tunisia">
+                                <option value="France">
+                                <option value="Spain">
+                                <option value="Italy">
+                                <option value="Germany">
+                                <option value="Portugal">
+                                <option value="Netherlands">
+                                <option value="Belgium">
+                                <option value="United Kingdom">
+                                <option value="Ireland">
+                                <option value="Switzerland">
+                                <option value="Canada">
+                                <option value="United States">
+                                <option value="Mexico">
+                                <option value="Brazil">
+                                <option value="Argentina">
+                                <option value="Turkey">
+                                <option value="Saudi Arabia">
+                                <option value="United Arab Emirates">
+                                <option value="Qatar">
+                                <option value="Egypt">
+                                <option value="South Africa">
+                                <option value="India">
+                                <option value="China">
+                                <option value="Japan">
+                                <option value="South Korea">
+                                <option value="Indonesia">
+                                <option value="Australia">
+                                <option value="New Zealand">
+                            </datalist>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-marrakech-primary btn-lg text-white">Enregistrer le participant</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>
